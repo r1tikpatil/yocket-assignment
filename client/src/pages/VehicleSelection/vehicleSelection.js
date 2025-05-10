@@ -24,26 +24,26 @@ const VehicleSelection = () => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-
-  const fetchAvailableVehicles = async () => {
-    try {
-      const response = await api.get("/game/available-vehicles");
-      setAvailableVehicles(response.data.data);
-
-      // Find the selected city
-      const cityId = cops[currentCopIndex].cityId;
-      const city = cities.data.find((c) => c.id === cityId);
-      setSelectedCity(city);
-
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching vehicles:", err);
-      setError("Failed to load available vehicles");
-      setLoading(false);
-    }
-  };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    const fetchAvailableVehicles = async () => {
+      try {
+        const response = await api.get("/game/available-vehicles");
+        setAvailableVehicles(response.data.data);
+
+        // Find the selected city
+        const cityId = cops[currentCopIndex].cityId;
+        const city = cities.data.find((c) => c.id === cityId);
+        setSelectedCity(city);
+
+        setLoading(false);
+      } catch (err) {
+        console.error("Error fetching vehicles:", err);
+        setError("Failed to load available vehicles");
+        setLoading(false);
+      }
+    };
+
     fetchAvailableVehicles();
   }, [currentCopIndex, cops, cities, setAvailableVehicles]);
 
