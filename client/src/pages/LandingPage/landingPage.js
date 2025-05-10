@@ -2,8 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 import { useGame } from "../../hooks/GameHook";
+import { copsData } from "../../utils/utils";
 
-function LandingPage() {
+const LandingPage = () => {
   const {
     setGameStarted,
     setCities,
@@ -25,11 +26,7 @@ function LandingPage() {
 
       // Reset game state
       setCurrentCopIndex(0);
-      setCops([
-        { id: 1, name: "Officer Johnson", cityId: null, vehicleId: null },
-        { id: 2, name: "Detective Miller", cityId: null, vehicleId: null },
-        { id: 3, name: "Inspector Garcia", cityId: null, vehicleId: null },
-      ]);
+      setCops(copsData);
       setGameCompleted(false);
       setGameResult(null);
 
@@ -99,6 +96,6 @@ function LandingPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LandingPage;
