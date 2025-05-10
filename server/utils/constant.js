@@ -12,8 +12,7 @@ export const vehicles = [
   { id: 3, name: "EV SUV", range: 120, available: 1 },
 ];
 
-// Game state
-export const gameState = {
+export var gameState = {
   fugitiveLocation: null,
   copSelections: [],
   availableVehicles: [

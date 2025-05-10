@@ -3,13 +3,13 @@ import { sendResponse } from "../utils/utils.js";
 
 export const getAllCities = (req, res) => {
   try {
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "Cities fetched successfully",
       data: cities,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -36,13 +36,13 @@ export const getCityById = (req, res) => {
       );
     }
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "City fetched successfully",
       data: city,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -78,7 +78,7 @@ export const createCity = (req, res) => {
 
     cities.push(newCity);
 
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: true,
@@ -88,7 +88,7 @@ export const createCity = (req, res) => {
       201
     );
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -119,13 +119,13 @@ export const updateCity = (req, res) => {
     city.name = name || city.name;
     city.distance = distance || city.distance;
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "City updated successfully",
       data: city,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -154,13 +154,13 @@ export const deleteCity = (req, res) => {
 
     const deletedCity = cities.splice(cityIndex, 1)[0];
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "City deleted successfully",
       data: deletedCity,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,

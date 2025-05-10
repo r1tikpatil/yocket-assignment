@@ -1,19 +1,23 @@
-// server.js
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const cityRoutes = require("./routes/cities.route");
-const vehicleRoutes = require("./routes/vehicles.route");
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import morgan from 'morgan';
+
+import cityRoutes from "./routes/cities.route.js";
+import vehicleRoutes from "./routes/vehicles.route.js";
+import gameRoutes from "./routes/games.route.js";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
 
 // Middleware
+app.use(morgan('dev'));
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/api/city", cityRoutes);
+app.use("/api/cities", cityRoutes);
 app.use("/api/vehicle", vehicleRoutes);
+app.use("/api/game", gameRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

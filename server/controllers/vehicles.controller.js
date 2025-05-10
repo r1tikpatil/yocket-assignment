@@ -3,13 +3,13 @@ import { sendResponse } from "../utils/utils.js";
 
 export const getAllVehicles = (req, res) => {
   try {
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "Vehicles fetched successfully",
       data: vehicles,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -36,13 +36,13 @@ export const getVehicleById = (req, res) => {
       );
     }
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "Vehicle fetched successfully",
       data: vehicle,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -79,7 +79,7 @@ export const createVehicle = (req, res) => {
 
     vehicles.push(newVehicle);
 
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: true,
@@ -89,7 +89,7 @@ export const createVehicle = (req, res) => {
       201
     );
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -121,13 +121,13 @@ export const updateVehicle = (req, res) => {
     vehicle.range = range || vehicle.range;
     vehicle.available = available !== undefined ? available : vehicle.available;
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "Vehicle updated successfully",
       data: vehicle,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
@@ -158,13 +158,13 @@ export const deleteVehicle = (req, res) => {
 
     const deletedVehicle = vehicles.splice(vehicleIndex, 1)[0];
 
-    sendResponse(res, {
+    return sendResponse(res, {
       success: true,
       message: "Vehicle deleted successfully",
       data: deletedVehicle,
     });
   } catch (error) {
-    sendResponse(
+    return sendResponse(
       res,
       {
         success: false,
